@@ -1,9 +1,0 @@
-.\out\wx1000\bd_wdt.o: ..\Source\src\bd_wdt.c
-.\out\wx1000\bd_wdt.o: ..\nrf51822\Include\nrf51.h
-.\out\wx1000\bd_wdt.o: C:\Keil\ARM\CMSIS\Include\core_cm0.h
-.\out\wx1000\bd_wdt.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-.\out\wx1000\bd_wdt.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
-.\out\wx1000\bd_wdt.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
-.\out\wx1000\bd_wdt.o: ..\nrf51822\Include\system_nrf51.h
-.\out\wx1000\bd_wdt.o: ..\nrf51822\Include\nrf51_bitfields.h
-.\out\wx1000\bd_wdt.o: C:\Keil\ARM\CMSIS\Include\core_cm0.h
