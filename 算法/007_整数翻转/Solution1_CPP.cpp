@@ -13,7 +13,10 @@
 假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−231,  231 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。
 */
 
-
+/*
+执行用时 : 12 ms, 在Reverse Integer的C++提交中击败了98.18% 的用户
+内存消耗 : 8.4 MB, 在Reverse Integer的C++提交中击败了74.72% 的用户
+*/
 class Solution {
 public:
     int reverse(int x) 
@@ -68,7 +71,8 @@ int main(void)
    cout << solution.reverse(-2147483647) << endl;
    cout << solution.reverse(-110)        << endl;
    cout << solution.reverse(2147483641)  << endl;
-
    return 0;
-   
 }
+
+
+
