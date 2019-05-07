@@ -34,17 +34,76 @@ M             1000
 */
 
 /*
-执行用时 : 48 ms, 在Palindrome Number的C++提交中击败了96.22% 的用户
-内存消耗 : 8.1 MB, 在Palindrome Number的C++提交中击败了83.31% 的用户
 */
 
 
 class Solution {
 public:
-    int romanToInt(string s) {
-        
-        
-        
+    int romanToInt(string s)
+    {
+        int  n            = s.length()  ;
+        int  ret_val      = 0           ;
+        char level_new    = 0           ;/* 1,2,3,4,5,6,7*/
+        int  level_old    = 0           ; /*状态机需要的两个变量*/
+        int  value        = 0           ;
+        int  level_sum    = 0           ;
+        for(int i = 0; i < n ; i++)
+        {
+            level_old = level_new;
+            char2int(s.charAt(i),level_new,value);
+            
+            if(level_old == 0)
+            {
+                level_sum += value;
+                continue;
+            }
+            
+            if(level_old == level)
+            
+            
+            
+            
+            
+        }
+    }
+    
+    void char2int(char ch, char& level,char value)
+    {
+        switch(ch)
+        {
+            case 'I': //1
+                value = 1;
+                level = 1;
+            break;
+            case 'V': //5
+                value = 5;
+                level = 2;
+            break;
+            case 'X': //10
+                value = 10;
+                level = 3;
+            break;
+            case 'L': //50
+                value = 50;
+                level = 4;
+            break;
+            case 'C': //100
+                value = 100;
+                level = 5;
+            break;
+            case 'D': //500
+                value = 500;
+                level = 6;
+            break;
+            case 'M': //1000
+                value = 500;
+                level = 7;
+            break;
+            default:
+                value = 0;
+                level = -1;
+            break;
+        }
     }
 };
 
@@ -54,10 +113,10 @@ using namespace std;
 int main(void)
 {
    Solution solution; 
-   cout << solution.isPalindrome(-2147483648) << endl;
-   cout << solution.isPalindrome(8) << endl;
-   cout << solution.isPalindrome(110)        << endl;
-   cout << solution.isPalindrome(121)  << endl;
+   cout << solution.romanToInt("III")   << endl;
+   cout << solution.romanToInt("IV")    << endl;
+   cout << solution.romanToInt("IX")    << endl;
+   cout << solution.romanToInt("IX")    << endl;
    return 0;
 }
 
