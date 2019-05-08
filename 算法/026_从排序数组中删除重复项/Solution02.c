@@ -79,10 +79,6 @@ int removeDuplicates(int* nums, int numsSize)
 }
 
 
-
-
-
-
 int main(void)
 {
     int nums[5] = {112,112,113,114,115};
@@ -98,15 +94,9 @@ int main(void)
 }
 
 
-
-
-
-
-
 /*
 161 / 161 个通过测试用例
 状态：通过
-执行用时 : 504 ms, 在Remove Duplicates from Sorted Array的C提交中击败了9.31% 的用户
-内存消耗 : 9.8 MB, 在Remove Duplicates from Sorted Array的C提交中击败了74.91% 的用户
-执行耗时爆表了.
+执行用时 : 32 ms, 在Remove Duplicates from Sorted Array的C提交中击败了73.08% 的用户
+内存消耗 : 9.7 MB, 在Remove Duplicates from Sorted Array的C提交中击败了74.91% 的用户
 */
