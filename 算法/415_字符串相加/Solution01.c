@@ -91,3 +91,74 @@ int main()
 执行用时：4 ms
 提交时间：2 分钟之前
 */
+
+
+
+/*
+统一接口后的解法
+*/
+    char * addStrings(char * num1, char * num2)
+    {
+       
+        int     len_num1    = strlen(num1);
+        int     len_num2    = strlen(num2);
+        int     max_len     = len_num1 > len_num2 ? len_num1 : len_num2;
+        int     min_len     = len_num1 > len_num2 ? len_num2 : len_num1;
+        char*   longerstr   = len_num1 > len_num2 ? num1     : num2;
+        char*   shorterstr  = len_num1 > len_num2 ? num2     : num1;
+       
+        int     carry_flag  = 0;    /* 0 无进位,1有进位*/
+        char*   pointer1    = NULL;
+        char*   pointer2    = NULL;
+        int     i           = 0;
+        int     temp        = 0;
+
+
+       pointer1 = (char*)malloc(sizeof(char)*(max_len+1));
+       pointer1[max_len] = 0;
+       
+       
+       
+        carry_flag = 0;
+        for(i = max_len-1 ; i >= 0; i--)
+        {
+            if(max_len - i  <= min_len)
+            {
+                temp = longerstr[i] - 0x30 + shorterstr[i+min_len-max_len] - 0x30 + carry_flag;
+            }
+            else
+            {
+                temp = longerstr[i] - 0x30 + carry_flag;
+            }
+            pointer1[i] = temp % 10 + 0x30;
+            if(temp>=10)
+            {
+                carry_flag = 1;
+            }
+            else
+            {
+                carry_flag = 0;
+            }
+        }
+       
+        if(carry_flag == 0)
+        {
+            return pointer1;
+        }
+        else
+        {
+            pointer2 = (char*)malloc(sizeof(char)*(max_len+2));
+            pointer2[max_len+1] = 0;
+            
+            pointer2[0] = '1';
+            memcpy(&pointer2[1],pointer1,max_len);
+            free(pointer1);
+            pointer1 = NULL;
+            return pointer2;
+        }
+    }
+
+/*
+    结果还不错： 执行用时 : 8 ms, 在Add Strings的C提交中击败了98.41% 的用户 内存消耗 : 7.2 MB, 在Add Strings的C提交中击败了87.50% 的用户
+*/
+
