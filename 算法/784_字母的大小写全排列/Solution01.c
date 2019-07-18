@@ -1,39 +1,7 @@
-
-
-int C_n_i(int n , int i )
-{
-    int ret_val = 1;
-    int j = 1;
-    
-    while(j<=n)
-    {
-        ret_val *= j;
-        j++;
-    }
-    j = 1;
-    while(j <=i)
-    {
-        ret_val /= j;
-        j++;
-    }
-    
-    j = 1;
-    while(j <=(n-i))
-    {
-        ret_val /= j;
-    }
-    return ret_val;
-}
-
-
-
-/**
- * Note: The returned array must be malloced, assume caller calls free().
- */
 char ** letterCasePermutation(char * S, int* returnSize)
 {
     
-    int     str_len     = str(S)                                ;
+    int     str_len     = strlen(S)                             ;
     char*   mark        = (char*)malloc(str_len*sizeof(char))   ;
     char*   en_ind      = (char*)malloc(str_len*sizeof(char))   ;
     int     num_en      = 0                                     ;
@@ -41,91 +9,57 @@ char ** letterCasePermutation(char * S, int* returnSize)
     char**  ret_val     = NULL                                  ;
     int     _returnSize = 0                                     ;
     char*   temp        = NULL                                  ;
-    int     pailie      = 0                                     ;
-    
+    int     j = 0;
     for(i = 0; i < str_len ; i++)
     {
         if((S[i] >='A') && (S[i]<='Z'))
         {
             mark[i]  = 1;
             en_ind[num_en++] = i;
-            
         }
         else if((S[i] >='a') && (S[i]<='z'))
         {
             mark[i]  = 2;
             en_ind[num_en++] = i;
         }
-        else
-        {
-            mark[i]  = 3;
-        }
     }
     
     _returnSize = pow(2,num_en);
     ret_val = (char**)malloc(sizeof(char*)*_returnSize);
-    for(i = 0; i < num_en;i++)
+    for(i = 0; i < _returnSize;i++) /*0~2^n-1*/
     {
-        pailie = C_n_i(num_en,i);
-        for(j=0;j<pailie;j++)
+        temp = (char*)malloc((str_len+1)*sizeof(char));
+        temp[str_len] = 0;
+        memcpy(temp,S,str_len*sizeof(char));
+        for(j=0;j<num_en;j++)
         {
-            /*怎么写排列*/
+            if(i&arr[j]) /*对应二进制为1就大小写之间互转*/
+            {
+                if(mark[en_ind[j]]==1) //原为大写字母
+                {
+                    temp[en_ind[j]] |= 0x20;
+                }
+                else
+                {
+                    temp[en_ind[j]] &= ~0x20; 
+                }
+            }
         }
         
-       
+        ret_val[i] = temp;
+
     }
     
+    free(mark);
+    mark = NULL;
+    free(en_ind);
+    en_ind = NULL;
     
-    * returnSize = _returnSize;
-    
+    *returnSize = _returnSize;
     return ret_val;
-    
 }
 
-
-
-
-char**  ret_val     = NULL      ;
-int     num_en      = 0         ;
-int     _returnSize = 0         ;
-int     __count     = 0         ;
-
-void __recusive(char * S,char*   mark)
-{
-    
-}
-
-char ** letterCasePermutation(char * S, int* returnSize)
-{
-    int     str_len     = str(S)                                ;
-    char*   mark        = (char*)malloc(str_len*sizeof(char))   ;
-    
-    ret_val     = NULL      ;
-    num_en      = 0         ;
-    _returnSize = 0         ;
-    __count     = 0         ;
-
-    
-    for(i = 0; i < str_len ; i++)
-    {
-        if((S[i] >='A') && (S[i]<='Z'))
-        {
-            mark[i]  = 1;
-            en_ind[num_en++] = i;
-            
-        }
-        else if((S[i] >='a') && (S[i]<='z'))
-        {
-            mark[i]  = 2;
-            en_ind[num_en++] = i;
-        }
-        else
-        {
-            mark[i]  = 3;
-        }
-    }
-    
-    _returnSize = pow(2,num_en);
-    ret_val = (char**)malloc(sizeof(char*)*_returnSize);
-    
-}
+/*
+执行用时 :28 ms, 在所有 C 提交中击败了13.33%的用户
+内存消耗 :9.9 MB, 在所有 C 提交中击败了90.91%的用户
+*/
