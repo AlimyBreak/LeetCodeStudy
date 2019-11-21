@@ -57,6 +57,7 @@ class Solution
             }
             
             (( unsigned char*)(&M[row][col]))[1] = temp/count;
+            // M[i][j] |= (temp/count)<<8;
         }
         
     public:
@@ -81,6 +82,7 @@ class Solution
             {
                 for(j = 0 ; j < c; j++)
                 {
+                    // M[i][j] >>= 8;
                     M[i][j] = (( unsigned char*)(&M[i][j]))[1];
                 }
             }
@@ -97,4 +99,14 @@ class Solution
 执行用时 :264 ms, 在所有 cpp 提交中击败了31.23% 的用户
 内存消耗 :17.6 MB, 在所有 cpp 提交中击败了79.09%的用户
 https://leetcode-cn.com/submissions/detail/37351245/
+*/
+
+
+/*
+使用位操作时.
+M[i][j] >>= 8;
+M[i][j] |= (temp/count)<<8;
+执行用时 :152 ms, 在所有 cpp 提交中击败了100.00% 的用户
+内存消耗 :17.4 MB, 在所有 cpp 提交中击败了93.64%的用户
+https://leetcode-cn.com/submissions/detail/37352559/
 */
