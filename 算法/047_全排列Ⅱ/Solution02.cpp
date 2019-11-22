@@ -1,6 +1,6 @@
 // https://leetcode-cn.com/problems/permutations-ii/
 // https://www.bilibili.com/video/av76286065
-// 没看懂
+
 class Solution
 {
     private:
@@ -23,8 +23,8 @@ class Solution
                     continue;
                 }
                 
-                /* 跳过与上一个重复的*/
-                if(i > 0 && nums[i] == nums[i-1] && !visited[i-1]) // 为什么要continue
+                /* 跳过与上一个重复的,最基本的重复情况就是重复两个*/
+                if(i > 0 && nums[i] == nums[i-1] && !visited[i-1]) //
                 {
                     continue;
                 }
@@ -61,6 +61,6 @@ class Solution
 执行结果：
 通过
 显示详情
-执行用时 :28 ms, 在所有 cpp 提交中击败了93.91% 的用户
-内存消耗 :9.9 MB, 在所有 cpp 提交中击败了83.71%的用户
+执行用时 :28 ms, 在所有 cpp 提交中击败了93.70% 的用户
+内存消耗 :9.8 MB, 在所有 cpp 提交中击败了93.27%的用户
 */
