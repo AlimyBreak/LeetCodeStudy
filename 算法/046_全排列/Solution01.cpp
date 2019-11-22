@@ -2,7 +2,9 @@ class Solution
 {
     private:
         vector<vector<int>> ret_val;
-        void __rank(vector<int>& nums,vector<int> level_rank)
+        void __rank(    vector<int>& nums       ,
+                        vector<int> level_rank
+                   )
         {
             if(nums.size() == 1)
             {
